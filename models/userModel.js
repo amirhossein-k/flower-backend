@@ -26,7 +26,13 @@ const userSchema = new Schema({
         type:String,
         required:true,
         default: 'https://uploade.storage.iran.liara.space/pngwing.com-%2826%29.png'
+    },
+    detail:{
+        type:[],
+        require:true,
+        default:[ {"family":"","address":"","phone_number":"","history_buy":[]}]
     }
+
 },{timestamps:true})
 
 userSchema.methods.matchPassword = async function(enteredPassword){
