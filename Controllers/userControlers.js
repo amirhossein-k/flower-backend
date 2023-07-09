@@ -60,4 +60,43 @@ const authUser = asyncHandler(async( req,res )=>{
 })
 
 
-module.exports = { registerUser,authUser}
+const updateUser = asyncHandler(async(req,res)=>{
+
+    
+        var user = await User.findById(req.user._id)
+        // const {name,family,phone_number,email,password} = req.body
+        
+        if(req.user){
+            user.name = req.body.name || user.name;
+            user.detail =  {'family':req.body.family ,"address": user.detail[0].address,"phone_number":req.body.phone_number, "history_buy": user.detail[0].history_buy} || user.detail;
+            // user.family =  req.body.family || user.family;
+            user.email =  req.body.email || user.email;
+            if (req.body.password) {
+                user.password = req.body.password;
+            }
+            const updatedUser = await user.save();
+            console.log(updatedUser,'famoy')
+            res.json({
+                _id: updatedUser._id,
+                name: updatedUser.name,
+                email: updatedUser.email,
+                pic: updatedUser.pic,
+                detail:updatedUser.detail,
+                isAdmin: updatedUser.isAdmin,
+                token: generateToken(updatedUser._id),
+            });
+        }else{
+            res.status(404);
+            throw new Error("User Not Found");
+
+        }
+        // console.log(name,'name')
+ 
+       
+
+    
+    
+})
+
+
+module.exports = { registerUser,authUser,updateUser}
