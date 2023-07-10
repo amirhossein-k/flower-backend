@@ -68,7 +68,7 @@ const updateUser = asyncHandler(async(req,res)=>{
         
         if(req.user){
             user.name = req.body.name || user.name;
-            user.detail =  {'family':req.body.family ,"address": user.detail[0].address,"phone_number":req.body.phone_number, "history_buy": user.detail[0].history_buy} || user.detail;
+            user.detail =  {'family':req.body.family || user.detail[0].family ,"address": req.body.address||user.detail[0].address,"phone_number":req.body.phone_number || user.detail[0].phone_number, "history_buy": req.body.historyBuy ||user.detail[0].history_buy} || user.detail;
             // user.family =  req.body.family || user.family;
             user.email =  req.body.email || user.email;
             if (req.body.password) {

@@ -30,7 +30,7 @@ const userSchema = new Schema({
     detail:{
         type:[],
         require:true,
-        default:[ {"family":"","address":"","phone_number":"","history_buy":[]}]
+        default:[ {"family":"","address":[],"phone_number":"","history_buy":[]}]
     }
 
 },{timestamps:true})
