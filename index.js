@@ -6,6 +6,8 @@ const ProductRouter = require('./routes/ProductRouter')
 const uploadRoutes = require('./routes/uploadRouter')
 const userRoutes = require('./routes/userRoutes')
 const categoryRouter = require('./routes/categoryRouter')
+const cityRouter = require('./routes/cityRouter')
+
 
 // 
 
@@ -28,6 +30,7 @@ app.get('/api/test', (req,res)=>res.send({mess:'hello'}))
 app.use('/api/product',ProductRouter)
 app.use('/api/uploade',uploadRoutes)
 app.use('/api/users',userRoutes)
+app.use('/api/city',cityRouter)
 app.use('/api/category',categoryRouter)
 
 
