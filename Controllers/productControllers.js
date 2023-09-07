@@ -13,10 +13,10 @@ const listProducts = asyncHandler(async(req,res)=>{
 })
 
 const getProduct = asyncHandler(async(req,res)=>{
-    const  {_id} = req.body
+    const  {order} = req.body
     const product = await Product.find({_id:req.params.id})
     if(product){
-        res.status(200).json(product)
+        res.status(200).json({product,order})
     }else{
         res.status(404).json({error:'not found'})
         throw new Error(`Product not found ${id}`)

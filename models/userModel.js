@@ -31,6 +31,11 @@ const userSchema = new Schema({
         type:[],
         require:true,
         default:[ {"family":"","address":[],"phone_number":"","history_buy":[]}]
+    },
+    basket:{
+        type:[],
+        required:true,
+        default:[]
     }
 
 },{timestamps:true})
